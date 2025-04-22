@@ -5,13 +5,9 @@ services:
     container_name: mongo1
     ports:
       - "27018:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: le_bras_sur_la_chaise238
     volumes:
-      - ./init:/docker-entrypoint-initdb.d
-      - ./mongo-keyfile:/etc/mongo-keyfile:ro
-    command: ["--replSet", "rs0", "--keyFile", "/etc/mongo-keyfile"]
+      - ./data/mongo1:/data/db
+    command: ["--replSet", "rs0"]
     networks:
       - mongo-rs
 
@@ -20,12 +16,9 @@ services:
     container_name: mongo2
     ports:
       - "27019:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: le_bras_sur_la_chaise238
     volumes:
-      - ./mongo-keyfile:/etc/mongo-keyfile:ro
-    command: ["--replSet", "rs0", "--keyFile", "/etc/mongo-keyfile"]
+      - ./data/mongo2:/data/db
+    command: ["--replSet", "rs0"]
     networks:
       - mongo-rs
 
@@ -34,12 +27,9 @@ services:
     container_name: mongo3
     ports:
       - "27020:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: le_bras_sur_la_chaise238
     volumes:
-      - ./mongo-keyfile:/etc/mongo-keyfile:ro
-    command: ["--replSet", "rs0", "--keyFile", "/etc/mongo-keyfile"]
+      - ./data/mongo3:/data/db
+    command: ["--replSet", "rs0"]
     networks:
       - mongo-rs
 
