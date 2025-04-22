@@ -153,7 +153,7 @@ rs.add("mongo3:27017")
 
 3. Exécuter l'application Python:
 ```bash
-python mongodb_app.py
+python mongodb_operations.py
 ```
 
 ## Notes additionnelles
